@@ -40,6 +40,12 @@ int main() {
     float total = 0;
     float maxPoints = 0;
     char rejouer;
+    float* tabResultat = NULL;
+    int nbPartiesJouee = 0;
+    float a;
+    float b;
+    float pearson;
+    float pourcentage;
 
     nomFichier = LireChaineDynamique("Entrez le nom du fichier : "); //nom fichier il y aura ce qu'on a envoyer dans terminal et donc le chemin vers le fichier
 
@@ -104,8 +110,6 @@ int main() {
             total = total + points[reponse - 1]; //-1 car tableau commence a 0 
             maxPoints = maxPoints + RechercherMaximum(points, nbPropositions); 
 
-
-
             free(question); //on libere tout pour la prochaine question 
             for (i = 0; i < nbPropositions; i++) { // boucle car plrs propo dans le tableau 
                 free(propositions[i]); //liberer les elements du tableau
@@ -117,6 +121,18 @@ int main() {
             questionsPosees++;
         } while (questionsPosees < nbQuestions);
 
+        pourcentage = total/maxPoints * 100;
+        if(pourcentage < 0)
+        {
+            pourcentage = 0;
+        }
+
+        tabResultat = AjoutResultat(tabResultat, nbPartiesJouee, pourcentage);
+        nbPartiesJouee++;
+        if(nbPartiesJouee > 1)
+        {
+           CalculCoeficients(tabResultat, nbPartiesJouee, &a, &b, &pearson);
+        }
 
         printf("\nVotre Total : %.2f/%.2f", total, maxPoints); 
 
@@ -375,16 +391,24 @@ void CalculCoeficients(float tab[], int x, float* a, float* b, float* pearson)
 
 float* AjoutResultat(float* tab, int n, float resultat)
 {
-    if(tab == NULL || n == 0)
+    float* nouveauTab = (float*)malloc((n + 1) * sizeof(float));
+    if(nouveauTab == NULL)
     {
-        //CREER DE MANIERE SECURISEE
-        float* nouveauTab = (float*)malloc((n + 1) * sizeof(float));
-        if(nouveauTab == NULL)
-        {
-            printf("Erreur d'allocation nouveau tableau\n");
-            return NULL;
-        }
+        printf("Erreur d'allocation nouveau tableau\n");
+        return NULL;
+    }
+
+    if(tab == NULL)
+    {
         nouveauTab[0] = resultat;
         return nouveauTab;
     }
+
+    if (tab != NULL) {
+        memcpy(nouveauTab, tab, n * sizeof(float));
+        free(tab);
+    }
+
+    nouveauTab[n] = resultat;
+    return nouveauTab;
 }
