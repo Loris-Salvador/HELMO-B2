@@ -32,9 +32,9 @@
               "RelativeDocumentMoniker": "lecture.c",
               "ToolTip": "C:\\Users\\loris\\Desktop\\HELMO-B2\\lecture.c",
               "RelativeToolTip": "lecture.c",
-              "ViewState": "AQIAAFoAAAAAAAAAAAAAwG0AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-08-07T13:55:01.82Z",
+              "WhenOpened": "2024-08-10T20:25:54.12Z",
               "EditorCaption": ""
             },
             {
@@ -47,8 +47,7 @@
               "RelativeToolTip": "lecture.h",
               "ViewState": "AQIAAB0AAAAAAAAAAADwv0cAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-07T13:54:54.144Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T13:54:54.144Z"
             },
             {
               "$type": "Document",
@@ -58,7 +57,7 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "C:\\Users\\loris\\Desktop\\HELMO-B2\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAAAA4AAAAgAAAA",
+              "ViewState": "AQIAANQBAAAAAAAAAAAAAPgBAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-08-07T13:54:20.274Z",
               "EditorCaption": ""

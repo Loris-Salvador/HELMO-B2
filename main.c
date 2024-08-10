@@ -46,6 +46,14 @@ int main() {
     float b;
     float pearson;
     float pourcentage;
+    char* reponses;
+    int* ReponsesInt;
+    char* reponsesString;
+    char reponseChar;
+    int reponseInt;
+    int formatInvalide;
+    int nbReponses;
+    int* reponsesRepetee;
 
     nomFichier = LireChaineDynamique("Entrez le nom du fichier : "); //nom fichier il y aura ce qu'on a envoyer dans terminal et donc le chemin vers le fichier
 
@@ -99,15 +107,75 @@ int main() {
                 printf("%d : %s\n", i + 1, propositions[tabOrdreProposition[i]]); //%s imprime les chaines de caracter == les propositions
             }
 
-            do {
-                LireEntier("\nVotre Reponse : ", &reponse);
-                if (reponse > nbPropositions || reponse < 1) // || ==OU
+            do
+            {
+                formatInvalide = 0;
+
+                reponses = LireChaineDynamique("\nVotre Reponse (format : x;x;x) : ");
+
+                nbReponses = (strlen(reponses) + 1) / 2;
+
+                ReponsesInt = (int*)malloc(nbReponses * sizeof(int));
+                reponsesRepetee = (int*)malloc((nbReponses-1) * sizeof(int));
+
+                if(ReponsesInt == NULL)
+                {
+                    printf("Erreur d'allocation Token question.\n");
+                    return 1;
+                }
+
+                for(int i=0; i < nbReponses; i++)
+                {
+                    reponsesString = RecupererToken(reponses, DELIMITEUR);
+                    if(strlen(reponsesString) != 1)
+                    {
+                        formatInvalide = 1;
+                        break;
+                    }
+                    reponseChar = reponsesString[0];
+                    if(!isdigit(reponseChar))
+                    {
+                        formatInvalide = 1;
+                        break;
+                    }
+                    reponseInt = reponseChar - '0';
+
+                    if(reponseInt < 1 || reponseInt > nbPropositions)
+                    {
+                        formatInvalide = 1;
+                        break;
+                    }
+                    for(int j=0; j<i; j++)
+                    {
+                        if(reponsesRepetee[j] == reponseInt)
+                        {
+                             formatInvalide = 1;
+                             break;
+                        }
+                    }
+
+                    ReponsesInt[i] = reponseInt;
+
+                    if(i < nbReponses -1)
+                    {
+                        reponsesRepetee[i] = reponseInt;
+                        reponses = reponses + 2;
+                    }
+                }
+
+                if(formatInvalide == 1)
                 {
                     printf("Reponse invalide\n");
+                    free(ReponsesInt);
                 }
-            } while (reponse > nbPropositions || reponse < 1);
+                
+            } while (formatInvalide == 1);
 
-            total = total + points[reponse - 1]; //-1 car tableau commence a 0 
+            for(int i=0; i<nbReponses; i++)
+            {
+                total = total + points[ReponsesInt[i]];
+            }
+
             maxPoints = maxPoints + RechercherMaximum(points, nbPropositions); 
 
             free(question); //on libere tout pour la prochaine question 
@@ -117,6 +185,9 @@ int main() {
             free(propositions); // libere le tableau 
             free(points);
             free(tabOrdreProposition);
+            free(ReponsesInt);
+            free(reponsesRepetee);
+
 
             questionsPosees++;
         } while (questionsPosees < nbQuestions);
@@ -150,7 +221,7 @@ int main() {
     if(nbPartiesJouee > 1) // pas de sens de calculer la linéarité si 1 seule partie
     {
         system("cls"); //clear le terminal 
-        printf("Voici l'ensemble de vos résultat sous forme de pourcentage :\n\n");
+        printf("Voici l'ensemble de vos resultat sous forme de pourcentage :\n\n");
         for(int i = 0 ; i < nbPartiesJouee; i++)
         {
             printf("%d : %.2f %%\n", i+1, tabResultat[i]);
