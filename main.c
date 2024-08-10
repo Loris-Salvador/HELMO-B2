@@ -32,7 +32,7 @@ int main() {
 
     int nbQuestions, nbLignes, numLigne, reponse, nbPropositions, retour, i;
     int questionsPosees = 0;
-    int* tabQuestionsPosees; // 
+    int* tabQuestionsPosees;
     char* question;
     char* nomFichier;
     char** propositions; //pointeur de pointeur d'une chaine de caractere
@@ -101,7 +101,7 @@ int main() {
 
             do {
                 LireEntier("\nVotre Reponse : ", &reponse);
-                if (reponse > nbPropositions || reponse < 1 || isdigit(reponse)) // || ==OU
+                if (reponse > nbPropositions || reponse < 1) // || ==OU
                 {
                     printf("Reponse invalide\n");
                 }
@@ -129,10 +129,7 @@ int main() {
 
         tabResultat = AjoutResultat(tabResultat, nbPartiesJouee, pourcentage);
         nbPartiesJouee++;
-        if(nbPartiesJouee > 1)
-        {
-           CalculCoeficients(tabResultat, nbPartiesJouee, &a, &b, &pearson);
-        }
+
 
         printf("\nVotre Total : %.2f/%.2f", total, maxPoints); 
 
@@ -150,6 +147,40 @@ int main() {
 
     } while (rejouer == 'O');
 
+    if(nbPartiesJouee > 1) // pas de sens de calculer la linéarité si 1 seule partie
+    {
+        system("cls"); //clear le terminal 
+        printf("Voici l'ensemble de vos résultat sous forme de pourcentage :\n\n");
+        for(int i = 0 ; i < nbPartiesJouee; i++)
+        {
+            printf("%d : %.2f %%\n", i+1, tabResultat[i]);
+        }
+        CalculCoeficients(tabResultat, nbPartiesJouee, &a, &b, &pearson);
+        printf("\nOrdonnee a l'origine (a) : %.2f\n", a);
+        printf("Pente (b) : %.2f\n", b);
+        printf("Coefficient de Pearson : %.2f\n", pearson);
+        if (pearson > 0.8 || pearson < -0.8) 
+        {
+            if (b > 0) 
+            {
+                printf("\nLa progression est fortement lineaire et positive.\n");
+            } 
+            else if (b < 0) 
+            {
+                printf("La progression est fortement lineaire et negative.\n");
+            } 
+            else 
+            {
+                printf("La progression est lineaire mais sans changement significatif.\n");
+            }
+        } 
+        else 
+        {
+            printf("\nLa relation lineaire n'est pas tres forte, ce qui suggere une variabilité importante dans la progression.\n");
+        }
+    }
+
+    free(tabResultat);
     FreeTabQcm(tabQcm, nbLignes); 
 
     return 0;
@@ -298,13 +329,13 @@ void FreeTabQcm(char** tabQcm, int nbLignes)
 
 float RechercherMaximum(float tab[], int nbElements)  // parcours le tableau pour trouver le max et donc trouver le deno des points /...
 {
-    float max = tab[0]; 
+    float max = 0;
 
-    for (int i = 1; i < nbElements; i++)
+    for (int i = 0; i < nbElements; i++)
     {
-        if (tab[i] > max)
+        if (tab[i] > 0)
         {
-            max = tab[i];
+            max = max + tab[i];
         }
     }
 
