@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{99646C4C-96A6-45C4-99BB-A99DB1E6E06C}|HELMO-B2.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{99646C4C-96A6-45C4-99BB-A99DB1E6E06C}|HELMO-B2.vcxproj|C:\\Users\\loris\\Desktop\\HELMO-B2\\lecture.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{99646C4C-96A6-45C4-99BB-A99DB1E6E06C}|HELMO-B2.vcxproj|solutionrelative:lecture.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{99646C4C-96A6-45C4-99BB-A99DB1E6E06C}|HELMO-B2.vcxproj|C:\\Users\\loris\\Desktop\\HELMO-B2\\lecture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{99646C4C-96A6-45C4-99BB-A99DB1E6E06C}|HELMO-B2.vcxproj|solutionrelative:lecture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99646C4C-96A6-45C4-99BB-A99DB1E6E06C}|HELMO-B2.vcxproj|C:\\Users\\loris\\Desktop\\HELMO-B2\\lecture.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{99646C4C-96A6-45C4-99BB-A99DB1E6E06C}|HELMO-B2.vcxproj|solutionrelative:lecture.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,20 +26,20 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "lecture.c",
               "DocumentMoniker": "C:\\Users\\loris\\Desktop\\HELMO-B2\\lecture.c",
               "RelativeDocumentMoniker": "lecture.c",
               "ToolTip": "C:\\Users\\loris\\Desktop\\HELMO-B2\\lecture.c",
               "RelativeToolTip": "lecture.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAABoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-08-10T20:25:54.12Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "lecture.h",
               "DocumentMoniker": "C:\\Users\\loris\\Desktop\\HELMO-B2\\lecture.h",
               "RelativeDocumentMoniker": "lecture.h",
@@ -47,7 +47,8 @@
               "RelativeToolTip": "lecture.h",
               "ViewState": "AQIAAB0AAAAAAAAAAADwv0cAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-07T13:54:54.144Z"
+              "WhenOpened": "2024-08-07T13:54:54.144Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -57,7 +58,7 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "C:\\Users\\loris\\Desktop\\HELMO-B2\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AQIAANQBAAAAAAAAAAAAAPgBAAAhAAAA",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAAAHkAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-08-07T13:54:20.274Z",
               "EditorCaption": ""

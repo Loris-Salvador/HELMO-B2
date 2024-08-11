@@ -25,34 +25,24 @@ void CalculCoeficients(float tab[], int x, float* a, float* b, float* pearson);
 //Fonction 6
 float* AjoutResultat(float* tab, int n, float resultat);
 
-
 int main() {
 
     srand(time(NULL));// chaque execution avoir tirage aleatoire
 
-    int nbQuestions, nbLignes, numLigne, reponse, nbPropositions, retour, i;
-    int questionsPosees = 0;
+    int nbQuestions, nbLignes, numLigne, reponse, nbPropositions, retour, i, questionsPosees = 0, reponseInt, formatInvalide, nbReponses;
     int* tabQuestionsPosees;
     char* question;
     char* nomFichier;
     char** propositions; //pointeur de pointeur d'une chaine de caractere
     float* points; //ini d'un pointeur de float une fonction plus loin 
-    float total = 0;
-    float maxPoints = 0;
     char rejouer;
     float* tabResultat = NULL;
     int nbPartiesJouee = 0;
-    float a;
-    float b;
-    float pearson;
-    float pourcentage;
+    float a, b, pearson, pourcentage, maxPoints = 0, total = 0;
     char* reponses;
     int* ReponsesInt;
     char* reponsesString;
     char reponseChar;
-    int reponseInt;
-    int formatInvalide;
-    int nbReponses;
     int* reponsesRepetee;
 
     nomFichier = LireChaineDynamique("Entrez le nom du fichier : "); //nom fichier il y aura ce qu'on a envoyer dans terminal et donc le chemin vers le fichier
@@ -116,11 +106,16 @@ int main() {
                 nbReponses = (strlen(reponses) + 1) / 2;
 
                 ReponsesInt = (int*)malloc(nbReponses * sizeof(int));
-                reponsesRepetee = (int*)malloc((nbReponses-1) * sizeof(int));
-
                 if(ReponsesInt == NULL)
                 {
-                    printf("Erreur d'allocation Token question.\n");
+                    printf("Erreur d'allocation Reponses entieres.\n");
+                    return 1;
+                }
+
+                reponsesRepetee = (int*)malloc((nbReponses-1) * sizeof(int));
+                if(reponsesRepetee == NULL)
+                {
+                    printf("Erreur d'allocation Reponses repepetee.\n");
                     return 1;
                 }
 
@@ -173,7 +168,7 @@ int main() {
 
             for(int i=0; i<nbReponses; i++)
             {
-                total = total + points[ReponsesInt[i]];
+                total = total + points[ReponsesInt[i] - 1];
             }
 
             maxPoints = maxPoints + RechercherMaximum(points, nbPropositions); 
@@ -192,7 +187,7 @@ int main() {
             questionsPosees++;
         } while (questionsPosees < nbQuestions);
 
-        pourcentage = total/maxPoints * 100;
+        pourcentage = (total/maxPoints) * 100;
         if(pourcentage < 0)
         {
             pourcentage = 0;
@@ -247,7 +242,7 @@ int main() {
         } 
         else 
         {
-            printf("\nLa relation lineaire n'est pas tres forte, ce qui suggere une variabilité importante dans la progression.\n");
+            printf("\nLa relation lineaire n'est pas tres forte, ce qui suggere une variabilite importante dans la progression.\n");
         }
     }
 

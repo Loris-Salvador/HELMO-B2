@@ -1,5 +1,5 @@
 ﻿  main.c
-C:\Users\loris\Desktop\HELMO-B2\main.c(31,11): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\loris\Desktop\HELMO-B2\main.c(116,53): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\loris\Desktop\HELMO-B2\main.c(33,42): warning C4101: 'reponse': unreferenced local variable
+C:\Users\loris\Desktop\HELMO-B2\main.c(30,11): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\loris\Desktop\HELMO-B2\main.c(106,53): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\loris\Desktop\HELMO-B2\main.c(32,42): warning C4101: 'reponse': unreferenced local variable
   HELMO-B2.vcxproj -> C:\Users\loris\Desktop\HELMO-B2\x64\Debug\HELMO-B2.exe
